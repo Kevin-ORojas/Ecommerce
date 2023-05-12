@@ -2,13 +2,20 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addProductCart } from "../../slices/cart.slice";
-
+import Swal from 'sweetalert2'
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
 
     const handleClickAddProduct = (e) => {
         e.preventDefault();
         dispatch(addProductCart({productId: product.id, quantity: 1}))
+        Swal.fire({
+          position: 'justify-center',
+          icon: 'success',
+          title: 'Agregado con exito!',
+          showConfirmButton: false,
+          timer: 1500
+        })
     }
      
   return (
@@ -26,7 +33,9 @@ const ProductCard = ({ product }) => {
         <span className="font-bold text-sm ml-2">$ {product.price}</span>
 
         <button onClick={handleClickAddProduct} className="absolute right-4 bottom-4 bg-red-500 p-2 text-white rounded-full w-[40px] aspect-square hover:bg-red-500/50 transition-colors">
-          <i className="bx bx-cart-alt"></i>
+          <i className="bx bx-cart-alt">
+            
+          </i>
         </button>
       </section>
     </Link>

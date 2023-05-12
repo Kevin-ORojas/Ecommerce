@@ -16,6 +16,7 @@ const Home = () => {
     e.preventDefault()
     const newProductName = e.target.productName.value
     setProductName(newProductName)
+    
   }
 
   const productsByName = useMemo(() => {
@@ -65,7 +66,7 @@ const Home = () => {
 
 
 
-      <ul className=" flex text-sm mt-4 font-semibold gap-1 justify-center 
+      <ul className=" flex text-sm mt-4 font-semibold gap-1  
             sm:gap-6 items-center justify-center">
         <li className="cursor-pointer hover:text-blue-500" onClick={handleClickCategory} data-category={0}>All</li>
         {

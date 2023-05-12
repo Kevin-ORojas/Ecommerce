@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch,  useSelector } from "react-redux";
 import { changeIsShowCart, getCartProducts, purchaseCart } from "../../slices/cart.slice";
 import CartProduct from "./CartProduct";
+import Swal from 'sweetalert2'
 
 const Cart = () => {
   const { isShowCart, products } = useSelector((store) => store.cart);
@@ -16,6 +17,13 @@ const Cart = () => {
 
   const handleClickCheckout = () => {
     dispatch(purchaseCart())
+    Swal.fire({
+      position: 'justify-center',
+      icon: 'success',
+      title: 'Purchase Complete',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   useEffect(() => {
